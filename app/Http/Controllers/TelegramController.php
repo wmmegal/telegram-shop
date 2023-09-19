@@ -13,7 +13,7 @@ class TelegramController extends Controller
      */
     public function __invoke(Api $telegram)
     {
-        $results = $telegram->setWebhook(config('telegram.bots.mybot.webhook_url'));
+        $results = $telegram->setWebhook(['url' => config('telegram.bots.mybot.webhook_url')]);
         dump($results);
 //        Log::info(print_r($updates, true));
     }
