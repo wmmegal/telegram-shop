@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Log;
 use Telegram\Bot\Api;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class TelegramController extends Controller
 {
-    public function __invoke(Api $telegram, Request $request)
+    public function __invoke()
     {
-        $updates = $telegram->getWebhookUpdate();
+        $updates = Telegram::getWebhookUpdate();
         Log::info(123123);
 
         return 'ok';
