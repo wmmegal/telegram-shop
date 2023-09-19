@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TelegramController;
 use Illuminate\Support\Facades\Route;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class);
-Route::post('/telegram/webhook', TelegramController::class);
+Route::post('/telegram/webhook', function () {
+    $updates = Telegram::getWebhookUpdate();
+    Log::info(123123);
+
+    return 'ok';
+});
