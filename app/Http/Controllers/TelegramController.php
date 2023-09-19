@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Log;
-use Psr\Http\Message\RequestInterface;
 use Telegram\Bot\Api;
 
 class TelegramController extends Controller
