@@ -12,6 +12,6 @@ class TelegramController extends Controller
     {
 
         $updates = $telegram->getWebhookUpdate();
-        Log::info(print_r($request, true));
+        Log::info(123123);
     }
 }
