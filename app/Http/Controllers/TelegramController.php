@@ -8,13 +8,9 @@ use Telegram\Bot\Exceptions\TelegramSDKException;
 
 class TelegramController extends Controller
 {
-    /**
-     * @throws TelegramSDKException
-     */
     public function __invoke(Api $telegram)
     {
-        $results = $telegram->setWebhook(['url' => config('telegram.bots.mybot.webhook_url')]);
-        dump($results);
-//        Log::info(print_r($updates, true));
+        $updates = $telegram->getWebhookUpdate();
+        Log::info(print_r($updates, true));
     }
 }
