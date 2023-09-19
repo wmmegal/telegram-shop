@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Cart\CartManager;
+use App\Cart\IdentityStorageContract;
+use App\Cart\SessionIdentityStorage;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
@@ -12,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(IdentityStorageContract::class, SessionIdentityStorage::class);
+        $this->app->singleton(CartManager::class);
     }
 
     /**
