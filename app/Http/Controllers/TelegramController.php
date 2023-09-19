@@ -10,8 +10,9 @@ class TelegramController extends Controller
 {
     public function __invoke(Api $telegram, Request $request)
     {
-
         $updates = $telegram->getWebhookUpdate();
         Log::info(123123);
+
+        return 'ok';
     }
 }

@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class);
-Route::get('/telegram/webhook', TelegramController::class);
+Route::post('/telegram/webhook', TelegramController::class);
