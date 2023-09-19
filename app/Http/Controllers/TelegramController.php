@@ -9,10 +9,10 @@ use Telegram\Bot\Api;
 
 class TelegramController extends Controller
 {
-    public function __invoke(Api $telegram, RequestInterface $request)
+    public function __invoke(Api $telegram, Request $request)
     {
 
-        $updates = $telegram->getWebhookUpdate(request:  $request);
-        Log::info(print_r($updates, true));
+        $updates = $telegram->getWebhookUpdate();
+        Log::info(print_r($request, true));
     }
 }
