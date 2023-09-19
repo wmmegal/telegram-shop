@@ -9,10 +9,11 @@ use Telegram\Bot\Laravel\Facades\Telegram;
 
 class TelegramController extends Controller
 {
-    public function __invoke()
+    public function __invoke(Api $telegram)
     {
-        $updates = Telegram::getWebhookUpdate();
-        Log::info(print_r($updates, true));
+        $updates = $telegram->getWebhookUpdate();
+        Log::info(print_r($updates->getChat(), true));
+        Log::info(print_r($updates->getMessage(), true));
 
         return 'ok';
     }
