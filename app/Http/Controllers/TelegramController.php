@@ -12,7 +12,7 @@ class TelegramController extends Controller
     public function __invoke()
     {
         $updates = Telegram::getWebhookUpdate();
-        Log::info(123123);
+        Log::info(print_r($updates, true));
 
         return 'ok';
     }
