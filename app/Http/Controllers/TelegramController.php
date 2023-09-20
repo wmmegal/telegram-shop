@@ -19,9 +19,7 @@ class TelegramController extends Controller
         $chatId = $updates->getChat()['id'] ?? '';
         $preCheckoutQueryId = $updates->preCheckoutQuery->get('id');
 
-        if (!$preCheckoutQueryId) {
-            Log::info($updates);
-        }
+        Log::info($updates);
 
 
         match (true) {
