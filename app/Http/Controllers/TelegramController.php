@@ -30,6 +30,7 @@ class TelegramController extends Controller
                 'pre_checkout_query_id' => $preCheckoutQueryId,
                 'ok' => true,
             ]),
+            default => ''
         };
 
         return 'ok';
