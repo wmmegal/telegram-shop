@@ -17,29 +17,35 @@ document.addEventListener('addToCart', () => {
     toggleCheckoutButton();
 })
 
+
 document.addEventListener('livewire:initialized', () => {
     toggleCheckoutButton();
 })
 
 document.addEventListener('delete-item', () => {
     toggleCheckoutButton();
+
 })
 
 
 Livewire.start()
 
 function toggleCheckoutButton() {
-    const cartSum = document.querySelector('.cart-sum');
+    setTimeout(() => {
+        const cartSum = document.querySelector('.cart-sum');
 
-    if (cartSum.textContent === '0,00 $') {
-        tg.MainButton.hide();
-    } else {
-        tg.MainButton.show();
-        tg.MainButton.setParams({
-            text: `CHECKOUT`,
-            color: '#d7b300'
-        });
-    }
+        if (cartSum.textContent === '0,00 $') {
+            console.log('hide')
+            tg.MainButton.hide();
+        } else {
+            console.log('show')
+            tg.MainButton.show();
+            tg.MainButton.setParams({
+                text: `CHECKOUT`,
+                color: '#d7b300'
+            });
+        }
+    }, 100)
 }
 
 

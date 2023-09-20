@@ -1,7 +1,7 @@
 <div class="product-card text-center"
      x-data="{count: 0, productId: 0}"
      x-init="count = {{ cart()->inCart($product->id) }}; productId = {{ $product->id }}"
-     x-on:delete-item.window="count = $event.detail[0]['id'] === productId ? 0: count; console.log($event.detail[0]['id'], productId)"
+     x-on:delete-item.window="count = $event.detail[0]['id'] === productId ? 0: count;"
 >
    <span data-id="1" class="product-cart-qty badge rounded-pill bg-warning" x-text="count" x-show="count">
    </span>
