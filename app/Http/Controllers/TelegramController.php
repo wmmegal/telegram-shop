@@ -21,7 +21,7 @@ class TelegramController extends Controller
         $keyboard = [
             'inline_keyboard' => [
                 [
-                    ['text' => 'Открыть магазин', 'web_app' => ['url' => config('app.url')]]
+                    ['text' => 'Button for open store', 'web_app' => ['url' => config('app.url')]]
                 ]
             ],
         ];
@@ -32,7 +32,7 @@ class TelegramController extends Controller
         match (true) {
             $text === '/start' => $telegram->sendMessage([
                 'chat_id' => $chatId,
-                'text' => 'Тестовый текст',
+                'text' => 'Open store',
                 'parse_mode' => 'HTML',
                 'reply_markup' => new Keyboard($keyboard)
             ])
