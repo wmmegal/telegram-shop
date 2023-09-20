@@ -15,8 +15,8 @@ class TelegramController extends Controller
     public function __invoke(Api $telegram)
     {
         $updates = $telegram->getWebhookUpdate();
-        $text = $updates->getMessage()[0]['text'];
-        $chatId = $updates->getMessage()[0]['id'];
+        $text = $updates->getMessage()->first()['text'];
+        $chatId = $updates->getMessage()->first()['id'];
 
         Log::info($text);
         Log::info($chatId);
