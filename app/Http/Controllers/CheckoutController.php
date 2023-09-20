@@ -10,7 +10,7 @@ class CheckoutController extends Controller
 {
     public function __invoke(CartManager $cart, Request $request)
     {
-        Log::info(print_r($request->only('query_id', 'user'), true));
+        Log::info(print_r($request->only('queryId', 'user'), true));
         $cart->truncate();
     }
 }
