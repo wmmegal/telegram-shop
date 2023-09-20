@@ -27,10 +27,12 @@ class CheckoutController extends Controller
 
         $orderProducts = cart()->items()->map(function (CartItem $item) {
             return [
-                'label' => $item->product->title,
+                'label' => $item->product->title . ' x ' . $item->quantity,
                 'amount' => $item->amount->raw()
             ];
         });
+
+        Log::info(print_r($orderProducts, true));
 
         $telegram->sendInvoice([
             'chat_id' => $chatId,
