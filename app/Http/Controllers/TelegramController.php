@@ -27,7 +27,7 @@ class TelegramController extends Controller
         match (true) {
             $text === '/start' => (new StartAction())->handle($chatId),
             !is_null($preCheckoutQueryId ?? '') => $telegram->answerPreCheckoutQuery([
-                'pre_checkout_query_id' => $preCheckoutQueryId,
+                'pre_checkout_query_id' => $preCheckoutQueryId ?? '',
                 'ok' => true,
             ]),
             default => ''
