@@ -10,9 +10,7 @@ class CheckoutController extends Controller
 {
     public function __invoke(CartManager $cart, Api $telegram)
     {
-        $updates = $telegram->getWebhookUpdate();
-
         Log::info($cart->total());
-        Log::info(print_r($updates, true));
+        $cart->truncate();
     }
 }
