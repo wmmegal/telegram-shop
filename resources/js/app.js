@@ -29,9 +29,8 @@ document.addEventListener('delete-item', () => {
 })
 
 tg.MainButton.onClick(() => {
-
     axios.post('/checkout').then(() => {
-
+        tg.close();
     });
 });
 
