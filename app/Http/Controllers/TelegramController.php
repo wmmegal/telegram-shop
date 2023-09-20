@@ -24,6 +24,7 @@ class TelegramController extends Controller
         match (true) {
             $text === '/start' => $telegram->sendMessage([
                 'chat_id' => $chatId,
+                'text' => 'Тестовый текст',
                 'reply_markup' => [
                     'inline_keyboard' => [
                         [
