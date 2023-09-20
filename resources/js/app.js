@@ -28,7 +28,10 @@ document.addEventListener('delete-item', () => {
 })
 
 tg.MainButton.onClick(() => {
-    axios.post('/checkout').then(() => {
+    axios.post('/checkout', {
+        queryId: tg.initDataUnsafe.query_id,
+        user: tg.initDataUnsafe.user,
+    }).then(() => {
         tg.close();
     });
 });
