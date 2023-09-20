@@ -14,16 +14,27 @@ tg.expand();
 Alpine.data('loadMore', loadMore)
 
 document.addEventListener('addToCart', e => {
-    tg.MainButton.show();
-    tg.MainButton.setParams({
-        text: `CHECKOUT`,
-        color: '#d7b300'
-    });
+    showCheckoutButton();
+})
+
+document.addEventListener('livewire:initialized', e => {
+    const cartSum = document.querySelector('.cart-sum');
+
+    if (cartSum.textContent !== '0,00 $') {
+        showCheckoutButton();
+    }
 })
 
 
 Livewire.start()
 
+function showCheckoutButton() {
+    tg.MainButton.show();
+    tg.MainButton.setParams({
+        text: `CHECKOUT`,
+        color: '#d7b300'
+    });
+}
 
 
 
