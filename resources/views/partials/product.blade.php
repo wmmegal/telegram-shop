@@ -1,4 +1,8 @@
-<div class="product-card text-center" x-data="{count: 0}" x-init="count = {{ cart()->inCart($product->id) }}">
+<div class="product-card text-center"
+     x-data="{count: 0, productId: 0}"
+     x-init="count = {{ cart()->inCart($product->id) }}; productId = {{ $product->id }}"
+     x-on:delete-item.window="count = $event.detail[0]['id'] === productId ? 0: count; console.log($event.detail[0]['id'], productId)"
+>
    <span data-id="1" class="product-cart-qty badge rounded-pill bg-warning" x-text="count" x-show="count">
    </span>
     <img src="{{ $product->thumb }}" class="card-img-top"
@@ -10,7 +14,7 @@
         <p class="product-price">
             {{ $product->price }}
         </p>
-        <div class="d-grid gap-2 mt-2" >
+        <div class="d-grid gap-2 mt-2">
             <button class="btn btn-warning add2cart"
                     @click="$dispatch('addToCart', { productId: {{ $product->id }} }); count++;">ADD
             </button>

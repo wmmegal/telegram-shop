@@ -31,14 +31,14 @@ Livewire.start()
 function toggleCheckoutButton() {
     const cartSum = document.querySelector('.cart-sum');
 
-    if (cartSum.textContent !== '0,00 $') {
+    if (cartSum.textContent === '0,00 $') {
+        tg.MainButton.hide();
+    } else {
         tg.MainButton.show();
         tg.MainButton.setParams({
             text: `CHECKOUT`,
             color: '#d7b300'
         });
-    } else {
-        tg.MainButton.hide();
     }
 }
 

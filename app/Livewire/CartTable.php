@@ -17,7 +17,7 @@ class CartTable extends Component
 
         cart()->delete($item);
 
-        $this->dispatch('delete-item');
+        $this->dispatch('delete-item', ['id' => $item->product->id]);
     }
 
     #[On('addToCart')]
