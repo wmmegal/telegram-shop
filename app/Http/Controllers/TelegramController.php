@@ -14,6 +14,8 @@ class TelegramController extends Controller
         $text = $updates->getMessage()['text'] ?? '';
         $chatId = $updates->getChat()['id'] ?? '';
 
+        Log::info($updates);
+
         match (true) {
             $text === '/start' => (new StartAction())->handle($chatId)
         };

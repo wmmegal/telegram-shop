@@ -32,8 +32,6 @@ class CheckoutController extends Controller
             ];
         })->toArray();
 
-        Log::info(print_r($orderProducts, true));
-
         $telegram->sendInvoice([
             'chat_id' => $chatId,
             'title' => "Заказ № $order->id",
