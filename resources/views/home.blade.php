@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     @livewireStyles
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/telegram-web-app.js'])
+    @vite(['resources/css/app.css', 'resources/js/telegram-web-app.js', 'resources/js/app.js', ])
 </head>
 <body>
 

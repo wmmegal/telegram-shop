@@ -12,7 +12,7 @@
         </p>
         <div class="d-grid gap-2 mt-2" >
             <button class="btn btn-warning add2cart"
-                    @click="$dispatch('addToCart', { productId: {{ $product->id }} }); count++">ADD
+                    @click="$dispatch('addToCart', { productId: {{ $product->id }} }); count++;">ADD
             </button>
         </div>
     </div>
