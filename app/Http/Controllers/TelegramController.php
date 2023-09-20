@@ -19,14 +19,18 @@ class TelegramController extends Controller
         $chatId = $updates->getChat()['id'] ?? '';
         $preCheckoutQueryId = $updates->preCheckoutQuery->get('id');
 
-        Log::info($updates);
+        if (!$preCheckoutQueryId) {
+            Log::info($updates);
+        }
+
 
         match (true) {
             $text === '/start' => (new StartAction())->handle($chatId),
             !is_null($preCheckoutQueryId) => $telegram->answerPreCheckoutQuery([
                 'pre_checkout_query_id' => $preCheckoutQueryId,
                 'ok' => true,
-            ])
+            ]),
+            default => ''
         };
 
         return 'ok';
