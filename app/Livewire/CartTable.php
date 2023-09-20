@@ -17,7 +17,7 @@ class CartTable extends Component
 
         cart()->delete($item);
 
-        $this->dispatch('delete-item')->to(MiniCart::class);
+        $this->dispatch('delete-item');
     }
 
     #[On('addToCart')]

@@ -13,27 +13,33 @@ tg.expand();
 
 Alpine.data('loadMore', loadMore)
 
-document.addEventListener('addToCart', e => {
-    showCheckoutButton();
+document.addEventListener('addToCart', () => {
+    toggleCheckoutButton();
 })
 
-document.addEventListener('livewire:initialized', e => {
-    const cartSum = document.querySelector('.cart-sum');
+document.addEventListener('livewire:initialized', () => {
+    toggleCheckoutButton();
+})
 
-    if (cartSum.textContent !== '0,00 $') {
-        showCheckoutButton();
-    }
+document.addEventListener('delete-item', () => {
+    toggleCheckoutButton();
 })
 
 
 Livewire.start()
 
-function showCheckoutButton() {
-    tg.MainButton.show();
-    tg.MainButton.setParams({
-        text: `CHECKOUT`,
-        color: '#d7b300'
-    });
+function toggleCheckoutButton() {
+    const cartSum = document.querySelector('.cart-sum');
+
+    if (cartSum.textContent !== '0,00 $') {
+        tg.MainButton.show();
+        tg.MainButton.setParams({
+            text: `CHECKOUT`,
+            color: '#d7b300'
+        });
+    } else {
+        tg.MainButton.hide();
+    }
 }
 
 
