@@ -45,7 +45,7 @@ function toggleCheckoutButton() {
                 color: '#d7b300'
             });
         }
-    }, 100)
+    }, 200)
 }
 
 
