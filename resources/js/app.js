@@ -44,17 +44,15 @@ function toggleCheckoutButton() {
         const cartSum = document.querySelector('.cart-sum');
 
         if (cartSum.textContent === '0,00 $') {
-            console.log(tg.isVisible);
             tg.MainButton.hide();
         } else {
-            console.log(tg.isVisible);
             tg.MainButton.show();
             tg.MainButton.setParams({
                 text: `CHECKOUT`,
                 color: '#d7b300'
             });
         }
-    }, 200)
+    }, 300)
 }
 
 
