@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Log;
 use Telegram\Bot\Api;
 use Telegram\Bot\Exceptions\TelegramSDKException;
+use Telegram\Bot\Keyboard\Keyboard;
 
 class TelegramController extends Controller
 {
@@ -17,6 +18,13 @@ class TelegramController extends Controller
         $updates = $telegram->getWebhookUpdate();
         $text = $updates->getMessage()['text'];
         $chatId = $updates->getChat()['id'];
+        $keyboard = [
+            'inline_keyboard' => [
+                [
+                    ['text' => 'Открыть магазин', 'web_app' => ['url' => config('app.url')]]
+                ]
+            ],
+        ];
 
         Log::info($text);
         Log::info($chatId);
@@ -25,13 +33,8 @@ class TelegramController extends Controller
             $text === '/start' => $telegram->sendMessage([
                 'chat_id' => $chatId,
                 'text' => 'Тестовый текст',
-                'reply_markup' => [
-                    'inline_keyboard' => [
-                        [
-                            ['text' => 'Открыть магазин', 'web_app' => ['url' => config('app.url')]]
-                        ]
-                    ],
-                ]
+                'parse_mode' => 'HTML',
+                'reply_markup' => new Keyboard($keyboard)
             ])
         };
 
