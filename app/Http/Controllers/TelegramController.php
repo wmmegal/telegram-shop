@@ -17,7 +17,7 @@ class TelegramController extends Controller
         $updates = $telegram->getWebhookUpdate();
         $text = $updates->getMessage()['text'] ?? '';
         $chatId = $updates->getChat()['id'] ?? '';
-        $preCheckoutQueryId = $updates->has('preCheckoutQuery') ? $updates->preCheckoutQuery->get('id') : null;
+        $preCheckoutQueryId = $updates->isType('pre_checkout_query') ? $updates->preCheckoutQuery->get('id') : null;
 
         Log::info(print_r($updates, true));
 
