@@ -6,6 +6,7 @@ import.meta.glob([
 
 import {Livewire, Alpine} from '../../vendor/livewire/livewire/dist/livewire.esm';
 import loadMore from "./modules/loadMore.js";
+import axios from "axios";
 
 const tg = window.Telegram.WebApp;
 tg.ready();
@@ -26,6 +27,13 @@ document.addEventListener('delete-item', () => {
     toggleCheckoutButton();
 
 })
+
+tg.MainButton.onClick(() => {
+
+    axios.post('/checkout').then(() => {
+
+    });
+});
 
 
 Livewire.start()

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TelegramController;
 use Illuminate\Support\Facades\Route;
@@ -17,4 +18,5 @@ use Telegram\Bot\Laravel\Facades\Telegram;
 */
 
 Route::get('/', HomeController::class);
+Route::post('/checkout', CheckoutController::class);
 Route::post('/telegram/webhook', TelegramController::class);
