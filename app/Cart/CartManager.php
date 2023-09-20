@@ -28,12 +28,17 @@ class CartManager
     {
         return Cache::remember($this->cacheKey(), now()->addHour(), function () {
             return Cart::with('cartItems')
-                ->where('storage_id', $this->identityStorage->get())
+                ->where('storage_id', $this->getId())
                 ->when(auth()->check(), function (Builder $q) {
                     $q->orWhere('user_id', auth()->id());
                 })
                 ->first() ?? false;
         });
+    }
+
+    public function getId(): string
+    {
+        return $this->identityStorage->get();
     }
 
     public function updateSessionId(string $old, string $current): void
