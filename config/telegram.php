@@ -211,4 +211,8 @@ return [
         // 'stop' => Acme\Project\Commands\StopCommand::class,
         // 'status' => Acme\Project\Commands\StatusCommand::class,
     ],
+
+    'stripe' => [
+        'token' => env('TELEGRAM_STRIPE_TOKEN')
+    ]
 ];
