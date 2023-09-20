@@ -28,7 +28,7 @@ class TelegramController extends Controller
                 'pre_checkout_query_id' => $preCheckoutQueryId,
                 'ok' => true,
             ]),
-            is_array($successfulPayment) => (new SuccessfulPaymentAction())->handler($successfulPayment, $chatId),
+            is_array($successfulPayment) => (new SuccessfulPaymentAction())->handle($successfulPayment, $chatId),
             default => ''
         };
 

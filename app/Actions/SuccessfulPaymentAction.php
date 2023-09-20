@@ -7,7 +7,7 @@ use Telegram\Bot\Laravel\Facades\Telegram;
 
 class SuccessfulPaymentAction
 {
-    public function handler(array $successfulPayment, $chatId): void
+    public function handle(array $successfulPayment, $chatId): void
     {
         $order = Order::find($successfulPayment['invoice_payload']);
 
