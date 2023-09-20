@@ -17,17 +17,14 @@ class TelegramController extends Controller
         $updates = $telegram->getWebhookUpdate();
         $text = $updates->getMessage()['text'] ?? '';
         $chatId = $updates->getChat()['id'] ?? '';
-
-        if ($updates->preCheckoutQuery) {
-            $preCheckoutQueryId = $updates->preCheckoutQuery->get('id');
-        }
+        $preCheckoutQueryId = $updates->has('preCheckoutQuery') ? $updates->preCheckoutQuery->get('id') : null;
 
         Log::info(print_r($updates, true));
 
         match (true) {
             $text === '/start' => (new StartAction())->handle($chatId),
-            !is_null($preCheckoutQueryId ?? '') => $telegram->answerPreCheckoutQuery([
-                'pre_checkout_query_id' => $preCheckoutQueryId ?? '',
+            !is_null($preCheckoutQueryId) => $telegram->answerPreCheckoutQuery([
+                'pre_checkout_query_id' => $preCheckoutQueryId,
                 'ok' => true,
             ]),
             default => ''
