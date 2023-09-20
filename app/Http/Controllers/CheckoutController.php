@@ -30,7 +30,7 @@ class CheckoutController extends Controller
                 'label' => $item->product->title . ' x ' . $item->quantity,
                 'amount' => $item->amount->raw()
             ];
-        });
+        })->toArray();
 
         Log::info(print_r($orderProducts, true));
 
